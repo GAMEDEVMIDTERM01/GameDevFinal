@@ -2,13 +2,13 @@
 #
 # Get latest from https://github.com/github/gitignore/blob/main/Unity.gitignore
 #
-/[Ll]ibrary/
-/[Tt]emp/
-/[Oo]bj/
-/[Bb]uild/
-/[Bb]uilds/
-/[Ll]ogs/
-/[Uu]ser[Ss]ettings/
+GameDevFinal/[Ll]ibrary/
+GameDevFinal/[Tt]emp
+GameDevFinal/[Oo]bj/
+GameDevFinal/[Bb]uild/
+GameDevFinal/[Bb]uilds/
+GameDevFinal/[Ll]ogs/
+GameDevFinal/[Uu]ser[Ss]ettings/
 
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
@@ -72,3 +72,4 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 GameDevFinal/Library/APIUpdater/project-dependencies.graph
 GameDevFinal/Library/Artifacts/00/0007f11ac2f59a90cd3ea1a317f15bc5
+GameDevFinal/Library/Artifacts/00/0000f9e138d5f0699ace233517bc51bd
