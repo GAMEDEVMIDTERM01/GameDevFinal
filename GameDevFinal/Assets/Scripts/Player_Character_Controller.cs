@@ -27,7 +27,7 @@ public class Player_Character_Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        isGrounded = Physics2D.OverlapCapsule(GroundCheck.position, new Vector2(0.1494f, 1f), CapsuleDirection2D.Vertical, 0, groundLayer);
+        isGrounded = Physics.OverlapSphere(GroundCheck.position, 0.1f, groundLayer) != null;
         MoveForward();
         MoveHorizontally();
 
@@ -54,6 +54,6 @@ public class Player_Character_Controller : MonoBehaviour
 
     private void Jump()
     {
-        playerRigid.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        playerRigid.AddForce(Vector3.up * jumpForce*Time.deltaTime, ForceMode.Impulse);
     }
 }
