@@ -4,50 +4,56 @@ using UnityEngine;
 
 public class Player_Character_Controller : MonoBehaviour
 {
-    private Rigidbody2D playerRigid;
+    private Rigidbody playerRigid;
     private bool isGrounded;
 
     [Header("Ground Checking")]
     public Transform GroundCheck;
     public LayerMask groundLayer;
-    public SpriteRenderer playerSprite;
 
-    public float speed;
+    public float forwardSpeed;
+    public float sideSpeed;
     public float jumpForce;
 
-    private PolygonCollider2D playerCollider;
+    private CapsuleCollider playerCollider;
 
     // Start is called before the first frame update
     void Start()
     {
-        playerRigid = GetComponent<Rigidbody2D>();
-        playerSprite = GetComponent<SpriteRenderer>();
-        playerCollider = GetComponent<PolygonCollider2D>();
+        playerRigid = GetComponent<Rigidbody>();
+        playerCollider = GetComponent<CapsuleCollider>();
     }
 
     // Update is called once per frame
     void Update()
     {
         isGrounded = Physics2D.OverlapCapsule(GroundCheck.position, new Vector2(0.1494f, 1f), CapsuleDirection2D.Vertical, 0, groundLayer);
-    }
-    private void FixedUpdate()
-    {
-        Move();
+        MoveForward();
+        MoveHorizontally();
 
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             Jump();
         }
     }
-    private void Move()
-    {
-        Vector2 movement = new Vector2(speed, playerRigid.velocity.y);
-        playerRigid.velocity = movement;
 
+    private void MoveForward()
+    {
+
+        playerRigid.velocity = new Vector3(playerRigid.velocity.x, playerRigid.velocity.y, forwardSpeed * Time.deltaTime);
 
     }
+
+    private void MoveHorizontally()
+    {
+        float direction = Input.GetAxis("Horizontal");
+        float horizontalSpeed = direction * sideSpeed * Time.deltaTime;
+
+        playerRigid.velocity = new Vector3(horizontalSpeed, playerRigid.velocity.y, playerRigid.velocity.z);
+    }
+
     private void Jump()
     {
-        playerRigid.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        playerRigid.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
     }
 }
