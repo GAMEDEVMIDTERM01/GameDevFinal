@@ -6,10 +6,11 @@ public class Player_Character_Controller : MonoBehaviour
 {
     private Rigidbody playerRigid;
     private bool isGrounded;
+    private bool canJump;
 
     [Header("Ground Checking")]
-    public Transform GroundCheck;
     public LayerMask groundLayer;
+    public float groundCheckDistance = 1.5f;
 
     [Header("Frames Per Second")]
     public float animationFPS;
@@ -34,22 +35,50 @@ public class Player_Character_Controller : MonoBehaviour
 
     private bool moveHor;
 
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(transform.position, transform.position - new Vector3(0, groundCheckDistance, 0));
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         playerRigid = GetComponent<Rigidbody>();
         playerCollider = GetComponent<CapsuleCollider>();
-        playerMaterial = GetComponent<Material>();
+        playerMaterial = GetComponent<Renderer>().material;
     }
 
     // Update is called once per frame
     void Update()
     {
-        isGrounded = Physics.OverlapSphere(GroundCheck.position, 0.1f, groundLayer) != null;
+
+        if(Physics.Raycast(transform.position, -transform.up, groundCheckDistance, groundLayer))
+        {
+            isGrounded = true;
+        }
+        else
+        {
+            isGrounded = false;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            canJump = true;
+        }
+        else
+        {
+            canJump = false;
+        }
+
+    }
+
+    private void FixedUpdate()
+    {
         MoveForward();
         MoveHorizontally();
 
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        if (canJump && isGrounded)
         {
             Jump();
         }
@@ -73,7 +102,14 @@ public class Player_Character_Controller : MonoBehaviour
 
         playerRigid.velocity = new Vector3(horizontalSpeed, playerRigid.velocity.y, playerRigid.velocity.z);
 
-        if(direction <0 || direction > 0) { moveHor = true; } else { moveHor = false; }
+        if(direction < 0 || direction > 0)
+        {
+            moveHor = true;
+        }
+        else
+        {
+            moveHor = false;
+        }
 
 
         if (direction > 0)
