@@ -39,7 +39,7 @@ public class Player_Character_Controller : MonoBehaviour
     {
         playerRigid = GetComponent<Rigidbody>();
         playerCollider = GetComponent<CapsuleCollider>();
-        playerMaterial = GetComponent<Material>();
+        playerMaterial = GetComponent<Renderer>().material;
     }
 
     // Update is called once per frame
