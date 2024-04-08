@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class MapRotation : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    public GameObject world;
+    public GameObject player;
+
+    private void OnTriggerEnter(Collider collision)
     {
-        
+        if(collision.gameObject == player)
+        {
+            world.GetComponent<RotateWorld>().RotateWorldMethod(transform.eulerAngles.z);
+            
+        }
     }
 }
