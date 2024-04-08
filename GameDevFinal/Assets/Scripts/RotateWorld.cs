@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class RotateWorld : MonoBehaviour
 {
-    public void RotateWorldMethod(Vector3 degrees)
+    public void RotateWorldMethod(float degrees)
     {
-        transform.Rotate(degrees);
+        transform.Rotate(0, 0, degrees);
     }
 
 }
