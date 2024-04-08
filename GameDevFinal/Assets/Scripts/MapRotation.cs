@@ -12,7 +12,7 @@ public class MapRotation : MonoBehaviour
     {
         if(collision.gameObject == player)
         {
-            //world.GetComponent<GameObject>().RotateWorldMethod(transform.rotation);
+            world.GetComponent<RotateWorld>().RotateWorldMethod(transform.rotation);
             
         }
     }

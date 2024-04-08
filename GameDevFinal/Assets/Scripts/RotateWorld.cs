@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RotateWorld : MonoBehaviour
 {
-    private void RotateWorldMethod(Vector3 degrees)
+    public void RotateWorldMethod(Vector3 degrees)
     {
         transform.Rotate(degrees);
     }
