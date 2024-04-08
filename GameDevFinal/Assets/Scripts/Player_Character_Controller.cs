@@ -35,6 +35,10 @@ public class Player_Character_Controller : MonoBehaviour
 
     private bool moveHor;
 
+    private float direction;
+
+    private bool isAnimating;
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
@@ -61,6 +65,7 @@ public class Player_Character_Controller : MonoBehaviour
         {
             isGrounded = false;
         }
+        
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -81,6 +86,20 @@ public class Player_Character_Controller : MonoBehaviour
         if (canJump && isGrounded)
         {
             Jump();
+
+            if (direction > 0)
+            {
+                PlayerJumpAnimation(jumpRightSprite);
+            }
+            else if(direction < 0)
+            {
+                PlayerJumpAnimation(jumpLeftSprite);
+            }
+            else
+            {
+                PlayerJumpAnimation(jumpSprite);
+            }
+            Debug.Log("player is jumping");
         }
     }
 
@@ -97,7 +116,7 @@ public class Player_Character_Controller : MonoBehaviour
 
     private void MoveHorizontally()
     {
-        float direction = Input.GetAxis("Horizontal");
+        direction = Input.GetAxis("Horizontal");
         float horizontalSpeed = direction * sideSpeed * Time.deltaTime;
 
         playerRigid.velocity = new Vector3(horizontalSpeed, playerRigid.velocity.y, playerRigid.velocity.z);
@@ -112,41 +131,19 @@ public class Player_Character_Controller : MonoBehaviour
         }
 
 
-        if (direction > 0)
+        if (direction > 0 && isGrounded)
         {
-            if (!isGrounded)
-            {
-                PlayerAnimation(jumpRightSprite);
-            }
-            else
-            {
-                PlayerAnimation(rightSprite);
-            }
-
+            PlayerAnimation(rightSprite);
         }
-        else if (direction < 0)
-        {
-            if (!isGrounded)
-            {
-                PlayerAnimation(jumpLeftSprite);
-            }
-            else
-            {
-                PlayerAnimation(leftSprite);
-            }
-            
+        else if (direction < 0 && isGrounded)
+        {  
+            PlayerAnimation(leftSprite);
         }
     }
 
     private void Jump()
     {
         playerRigid.AddForce(Vector3.up * jumpForce*Time.deltaTime, ForceMode.Impulse);
-
-        if(moveHor == false)
-        {
-            PlayerAnimation(jumpSprite);
-        }
-
     }
 
     private void PlayerAnimation(Texture[] flipbookSprites)
@@ -161,6 +158,26 @@ public class Player_Character_Controller : MonoBehaviour
                 currentFrame = 0;
             }
             playerMaterial.mainTexture = flipbookSprites[currentFrame];
+        }
+    }
+
+    private void PlayerJumpAnimation(Texture[] flipbookSprites)
+    {
+        isAnimating = true;
+
+        if (isAnimating)
+        {
+            animationTimer -= Time.deltaTime;
+            if (animationTimer <= 0)
+            {
+                animationTimer = 1f / animationFPS;
+                currentFrame++;
+                if (currentFrame >= flipbookSprites.Length)
+                {
+                    isAnimating = false;
+                }
+                playerMaterial.mainTexture = flipbookSprites[currentFrame];
+            }
         }
     }
 }
