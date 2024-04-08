@@ -86,20 +86,6 @@ public class Player_Character_Controller : MonoBehaviour
         if (canJump && isGrounded)
         {
             Jump();
-
-            if (direction > 0)
-            {
-                PlayerJumpAnimation(jumpRightSprite);
-            }
-            else if(direction < 0)
-            {
-                PlayerJumpAnimation(jumpLeftSprite);
-            }
-            else
-            {
-                PlayerJumpAnimation(jumpSprite);
-            }
-            Debug.Log("player is jumping");
         }
     }
 
@@ -135,15 +121,31 @@ public class Player_Character_Controller : MonoBehaviour
         {
             PlayerAnimation(rightSprite);
         }
+        else if(direction > 0 && !isGrounded)
+        {
+            PlayerJumpAnimation(jumpRightSprite);
+        }
+
         else if (direction < 0 && isGrounded)
         {  
             PlayerAnimation(leftSprite);
         }
+        else if(direction <0 && !isGrounded)
+        {
+            PlayerJumpAnimation(jumpLeftSprite);
+        }
+
     }
 
     private void Jump()
     {
         playerRigid.AddForce(Vector3.up * jumpForce*Time.deltaTime, ForceMode.Impulse);
+
+        if(moveHor == false)
+        {
+            PlayerJumpAnimation(jumpSprite);
+        }
+
     }
 
     private void PlayerAnimation(Texture[] flipbookSprites)
@@ -163,21 +165,19 @@ public class Player_Character_Controller : MonoBehaviour
 
     private void PlayerJumpAnimation(Texture[] flipbookSprites)
     {
-        isAnimating = true;
-
-        if (isAnimating)
+        animationTimer -= Time.deltaTime;
+        if (animationTimer <= 0)
         {
-            animationTimer -= Time.deltaTime;
-            if (animationTimer <= 0)
+            animationTimer = 1f / animationFPS;
+            currentFrame++;
+            if (currentFrame >= flipbookSprites.Length)
             {
-                animationTimer = 1f / animationFPS;
-                currentFrame++;
-                if (currentFrame >= flipbookSprites.Length)
-                {
-                    isAnimating = false;
-                }
-                playerMaterial.mainTexture = flipbookSprites[currentFrame];
+                playerMaterial.mainTexture = flipbookSprites[(flipbookSprites.Length - 1)];
             }
+            else
+            {
+                playerMaterial.mainTexture = flipbookSprites[currentFrame];
+            }   
         }
     }
 }
