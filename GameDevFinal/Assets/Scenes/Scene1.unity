@@ -6477,7 +6477,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6094135468307831642, guid: 6c497250b366c4205b2b28359b0c9705, type: 3}
       propertyPath: forwardSpeed
-      value: 300
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 6094135468307831642, guid: 6c497250b366c4205b2b28359b0c9705, type: 3}
       propertyPath: groundLayer.m_Bits
