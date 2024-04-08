@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1601570005110867135}
   - component: {fileID: 8212807314510274157}
   - component: {fileID: 7432813305913487413}
-  - component: {fileID: 1371030770557926147}
   - component: {fileID: 1516164474846556546}
   - component: {fileID: 3774172148401331262}
   - component: {fileID: 6094135468307831642}
@@ -31,8 +30,8 @@ Transform:
   m_GameObject: {fileID: 6151978746375146308}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.005, y: 0.016, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 6.7, y: 0.5, z: 0}
+  m_LocalScale: {x: 3.634, y: 3.634, z: 3.634}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -89,28 +88,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1371030770557926147
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6151978746375146308}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!54 &1516164474846556546
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -136,7 +113,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!136 &3774172148401331262
 CapsuleCollider:
@@ -157,8 +134,8 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 1
+  m_Radius: 0.27
+  m_Height: 0.7
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &6094135468307831642
@@ -175,15 +152,40 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   groundCheckDistance: 1.5
-  animationFPS: 0
-  jumpSprite: []
-  jumpLeftSprite: []
-  jumpRightSprite: []
-  runSprite: []
-  leftSprite: []
-  rightSprite: []
-  forwardSpeed: 5
-  sideSpeed: 3
-  jumpForce: 5
+  animationFPS: 10
+  jumpSprite:
+  - {fileID: 2800000, guid: e1ecb0d015a5941d89c59edc0a058e6c, type: 3}
+  - {fileID: 2800000, guid: 0d73663a5c74d49698a2add2a0e6fc67, type: 3}
+  - {fileID: 2800000, guid: 06333bf3fb3c44a5ab7d0bbab9fa8bf4, type: 3}
+  - {fileID: 2800000, guid: 641c89436a5454a379cfd87b03f0d807, type: 3}
+  jumpLeftSprite:
+  - {fileID: 2800000, guid: 496d0ac780f2b468a8601580b1d6b5c1, type: 3}
+  - {fileID: 2800000, guid: 66af42c773e6942babe852794cbe7d71, type: 3}
+  - {fileID: 2800000, guid: e77702ea169324983994061fcb44db76, type: 3}
+  - {fileID: 2800000, guid: 83f9d53810e2f45029b8e9ab79aba6d1, type: 3}
+  jumpRightSprite:
+  - {fileID: 2800000, guid: ec79b3c28cdc648eaa2dc025cd913378, type: 3}
+  - {fileID: 2800000, guid: 28105021d66cc40c8821b917137ca2db, type: 3}
+  - {fileID: 2800000, guid: 71a1604431d0243eeb194d98458590cc, type: 3}
+  - {fileID: 2800000, guid: bc67b7f6c5c9749d6882e04e476d6001, type: 3}
+  runSprite:
+  - {fileID: 2800000, guid: 671c55b338f164c6aa310ec21aa89a2a, type: 3}
+  - {fileID: 2800000, guid: 7aeb59943cfd74695a3af86978444b3f, type: 3}
+  - {fileID: 2800000, guid: 6207a105b9f92420babf0be05c6a2eed, type: 3}
+  - {fileID: 2800000, guid: f448d540286134f2fad8270ec900d1dd, type: 3}
+  leftSprite:
+  - {fileID: 2800000, guid: f448d540286134f2fad8270ec900d1dd, type: 3}
+  - {fileID: 2800000, guid: 4d6745f8c67f147bfb8274dc795b1700, type: 3}
+  - {fileID: 2800000, guid: 1c6f3164b8f054616ae992e3f0534140, type: 3}
+  - {fileID: 2800000, guid: 5828a6dd943d14bf09f60ee088cdbb34, type: 3}
+  - {fileID: 2800000, guid: 1f2fd1da9ceaa43b7bcf74ed6aa924a3, type: 3}
+  rightSprite:
+  - {fileID: 2800000, guid: 00a1bca3ddd04495fbe0c7604635611d, type: 3}
+  - {fileID: 2800000, guid: 14b2a9dc308694cc2b2f0ae38d0acca7, type: 3}
+  - {fileID: 2800000, guid: 7027a6fa0ca2f4ed8a325a91d7a61162, type: 3}
+  - {fileID: 2800000, guid: 0b4d98226c82c4315a9d770c74586c6b, type: 3}
+  forwardSpeed: 300
+  sideSpeed: 200
+  jumpForce: 250

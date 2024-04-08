@@ -4,15 +4,9 @@ using UnityEngine;
 
 public class RotateWorld : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private void RotateWorldMethod(Vector3 degrees)
     {
-        
+        transform.Rotate(degrees);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
