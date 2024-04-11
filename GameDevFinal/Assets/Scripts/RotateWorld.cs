@@ -4,19 +4,9 @@ using UnityEngine;
 
 public class RotateWorld : MonoBehaviour
 {
-    public Quaternion targetRotation;
-
-    public void RotateWorldMethod(Quaternion degrees)
+    public void RotateWorldMethod(float degrees)
     {
-        targetRotation = degrees;        
-    }
-
-    private void Update()
-    {
-        if (targetRotation != transform.rotation)
-        {
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, 100f * Time.deltaTime);
-        }
+        transform.Rotate(0, 0, degrees);
     }
 
 }
