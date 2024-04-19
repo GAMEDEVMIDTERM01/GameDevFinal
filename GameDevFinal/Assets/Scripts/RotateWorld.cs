@@ -15,7 +15,7 @@ public class RotateWorld : MonoBehaviour
     {
         if (targetRotation != transform.rotation)
         {
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, 100f * Time.deltaTime);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, 200f * Time.deltaTime);
         }
     }
 
