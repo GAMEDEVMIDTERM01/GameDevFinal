@@ -85,6 +85,19 @@ public class Player_Character_Controller : MonoBehaviour
             PlayerAnimation(leftSprite);
         }
 
+        if (movingHor == false && !isGrounded && playerRigid.velocity.y > 0)
+        {
+            playerMaterial.mainTexture = jumpSprite[0];
+        }
+        else if (movingHor == true && direction > 0 && !isGrounded && playerRigid.velocity.y > 0)
+        {
+            playerMaterial.mainTexture = jumpRightSprite[0]; 
+        }
+        else if (movingHor == true && direction < 0 && !isGrounded && playerRigid.velocity.y > 0)
+        {
+            playerMaterial.mainTexture = jumpLeftSprite[0];
+        }
+
         if (movingHor == false && !isGrounded && playerRigid.velocity.y < 0)
         {
             PlayerJumpAnimation(jumpSprite);
