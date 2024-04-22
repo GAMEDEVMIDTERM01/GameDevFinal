@@ -156,6 +156,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   animationFPS: 30
+  animationFPSJump: 0
+  animationFPSLand: 0
   jumpSprite:
   - {fileID: 2800000, guid: 5bec3271b28de474f9f702d834fd545f, type: 3}
   - {fileID: 2800000, guid: 60853199182fa40d880dd47d8959860d, type: 3}
@@ -248,6 +250,24 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 42e2e7ff061de483684e0ca0575d8c07, type: 3}
   - {fileID: 2800000, guid: 2135f3edf6a9f4a089619362f001b31e, type: 3}
   - {fileID: 2800000, guid: edcd6659d522e487c91a331db36f1b68, type: 3}
+  landForward:
+  - {fileID: 2800000, guid: a22da2cddf091468180f8d7f0d803220, type: 3}
+  - {fileID: 2800000, guid: c3dfb249985174195aed50ecb03dc336, type: 3}
+  - {fileID: 2800000, guid: 986b9bebf662c4358bdbbd9358d58233, type: 3}
+  - {fileID: 2800000, guid: 3ef32351bfaa64f1aab6f16174d7eb23, type: 3}
+  - {fileID: 2800000, guid: e4d237c0fe95d4bf1aa9d7067b53d638, type: 3}
+  landLeft:
+  - {fileID: 2800000, guid: 1002646f781334cc183a2e84157c3123, type: 3}
+  - {fileID: 2800000, guid: 3f6e00df018e1432db672c9223040e80, type: 3}
+  - {fileID: 2800000, guid: 29f0d45b91d1349d696ae829ca237b15, type: 3}
+  - {fileID: 2800000, guid: f351624f6537a4300925f345e2ca6f23, type: 3}
+  - {fileID: 2800000, guid: 796d07855d78643e9a9d4bc893287880, type: 3}
+  landRight:
+  - {fileID: 2800000, guid: 61ea86a448819486db365768214cc54f, type: 3}
+  - {fileID: 2800000, guid: eee5b913deba34da380677bb9e06562b, type: 3}
+  - {fileID: 2800000, guid: 44298869bfb2b4a349dcbba02ec69fdc, type: 3}
+  - {fileID: 2800000, guid: 5baa4fd4715f34e6eb0698725a0183fb, type: 3}
+  - {fileID: 2800000, guid: 905becd29a661440ab53bbd832367786, type: 3}
   forwardSpeed: 300
   sideSpeed: 200
   jumpForce: 250

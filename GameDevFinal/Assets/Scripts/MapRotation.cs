@@ -31,7 +31,7 @@ public class MapRotation : MonoBehaviour
         if (collision.gameObject == player)
         {
             Debug.Log("player detected");
-            world.GetComponent<RotateWorld>().RotateWorldMethod(transform.localRotation);
+            world.GetComponent<RotateWorld>().OnPlayerDetected(transform.localRotation, collision.transform);
             
         }
     }

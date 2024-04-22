@@ -4,18 +4,28 @@ using UnityEngine;
 
 public class RotateWorld : MonoBehaviour
 {
-    public Quaternion targetRotation;
+    private Quaternion targetRotation;
 
-    public void RotateWorldMethod(Quaternion degrees)
+    public float rotationSpeed;
+    public Transform world;
+
+    public void OnPlayerDetected(Quaternion newTargetRotation, Transform playerTransform)
     {
-        targetRotation = degrees;        
+        world.transform.parent = null;
+        transform.position = playerTransform.position;
+        world.transform.parent = transform;
+
+        targetRotation = newTargetRotation;
+        
     }
 
     private void Update()
     {
         if (targetRotation != transform.rotation)
         {
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, 200f * Time.deltaTime);
+
+            //TO DO: Rotate around the currentRotationAxis to reach the target rotation
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         }
     }
 

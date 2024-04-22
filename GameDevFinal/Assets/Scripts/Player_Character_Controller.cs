@@ -16,6 +16,8 @@ public class Player_Character_Controller : MonoBehaviour
 
     [Header("Frames Per Second")]
     public float animationFPS;
+    public float animationFPSJump;
+    public float animationFPSLand;
 
     [Header("Animation Sprites")]
     public Texture[] jumpSprite;
@@ -24,6 +26,9 @@ public class Player_Character_Controller : MonoBehaviour
     public Texture[] runSprite;
     public Texture[] leftSprite;
     public Texture[] rightSprite;
+    public Texture[] landForward;
+    public Texture[] landLeft;
+    public Texture[] landRight;
 
     public float forwardSpeed;
     public float sideSpeed;
@@ -35,11 +40,16 @@ public class Player_Character_Controller : MonoBehaviour
     private float animationTimer;
     private int currentFrame;
 
+    private int currentFrameJump;
+
+    private int currentFrameLand;
+
     private bool movingHor;
 
     private float direction;
 
-    
+    private bool isLanding;
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
@@ -75,17 +85,31 @@ public class Player_Character_Controller : MonoBehaviour
             PlayerAnimation(leftSprite);
         }
 
-        if (movingHor == false && !isGrounded)
+        if (movingHor == false && !isGrounded && playerRigid.velocity.y < 0)
         {
             PlayerJumpAnimation(jumpSprite);
         }
-        if (movingHor == true && direction > 0 && !isGrounded)
+        else if (movingHor == true && direction > 0 && !isGrounded && playerRigid.velocity.y < 0)
         {
             PlayerJumpAnimation(jumpRightSprite);
         }
-        if (movingHor == true && direction < 0 && !isGrounded)
+        else if (movingHor == true && direction < 0 && !isGrounded && playerRigid.velocity.y < 0)
         {
             PlayerJumpAnimation(jumpLeftSprite);
+        }
+
+        if (movingHor == false && isLanding)
+        {
+            PlayerLandingAnimation(landForward);
+        }
+
+        else if (movingHor == true && direction > 0 && isLanding)
+        {
+            PlayerLandingAnimation(landRight);
+        }
+        else if (movingHor == true && direction < 0 && isLanding)
+        {
+            PlayerLandingAnimation(landLeft);
         }
     }
 
@@ -128,6 +152,7 @@ public class Player_Character_Controller : MonoBehaviour
 
     private void PlayerAnimation(Texture[] flipbookSprites)
     {
+
         animationTimer -= Time.deltaTime;
         if (animationTimer <= 0)
         {
@@ -146,16 +171,49 @@ public class Player_Character_Controller : MonoBehaviour
         animationTimer -= Time.deltaTime;
         if (animationTimer <= 0)
         {
-            animationTimer = 1f / animationFPS;
-            currentFrame++;
-            if (currentFrame >= flipbookSprites.Length)
+            animationTimer = 1f / animationFPSJump;
+            currentFrameJump++;
+            if (currentFrameJump >= flipbookSprites.Length)
+            {
+                playerMaterial.mainTexture = flipbookSprites[flipbookSprites.Length - 1];
+
+                if (isGrounded)
+                {
+
+                    StartCoroutine(landingCouroutine());
+                }
+            }
+            else
+            {
+                playerMaterial.mainTexture = flipbookSprites[currentFrameJump];
+            }   
+        }
+    }
+
+    IEnumerator landingCouroutine()
+    {
+        isLanding = true;
+        yield return new WaitForSeconds(0.12f);
+        isLanding = false;
+
+    }
+
+    private void PlayerLandingAnimation(Texture[] flipbookSprites)
+    {
+        animationTimer -= Time.deltaTime;
+        if (animationTimer <= 0)
+        {
+            animationTimer = 1f / animationFPSLand;
+            currentFrameLand++;
+            if (currentFrameLand >= flipbookSprites.Length)
             {
                 playerMaterial.mainTexture = flipbookSprites[flipbookSprites.Length - 1];
             }
             else
             {
-                playerMaterial.mainTexture = flipbookSprites[currentFrame];
-            }   
+                playerMaterial.mainTexture = flipbookSprites[currentFrameLand];
+            }
         }
-    }
+     }
+
 }
