@@ -76,48 +76,26 @@ public class Player_Character_Controller : MonoBehaviour
 
         canJump = Input.GetKeyDown(KeyCode.Space);
 
-        //something like the last stored value was player transform was negative but now grounded. then after coroutine set to 0.
-
         if(lastY < 0 && isGrounded)
         {
             StartCoroutine(landingCoroutine());
         }
 
-        
-
-        if (movingHor == false && isGrounded)
-        {
-            PlayerAnimation(runSprite);
-            
-        }
-
-        else if (direction > 0 && isGrounded)
-        {
-            PlayerAnimation(rightSprite);
-           
-        }
-
-        else if (direction < 0 && isGrounded)
-        {
-            PlayerAnimation(leftSprite);
-            
-        }
-
         if (movingHor == false && !isGrounded && playerRigid.velocity.y > 0)
         {
             playerMaterial.mainTexture = jumpSprite[0];
-            
-          
+
+
         }
         else if (movingHor == true && direction > 0 && !isGrounded && playerRigid.velocity.y > 0)
         {
             playerMaterial.mainTexture = jumpRightSprite[0];
-           
+
         }
         else if (movingHor == true && direction < 0 && !isGrounded && playerRigid.velocity.y > 0)
         {
             playerMaterial.mainTexture = jumpLeftSprite[0];
-           
+
         }
 
         if (movingHor == false && !isGrounded && playerRigid.velocity.y < 0)
@@ -141,18 +119,39 @@ public class Player_Character_Controller : MonoBehaviour
         if (movingHor == false && isLanding)
         {
             PlayerLandingAnimation(landForward);
-            
+
         }
 
         else if (movingHor == true && direction > 0 && isLanding)
         {
             PlayerLandingAnimation(landRight);
-            
+
         }
         else if (movingHor == true && direction < 0 && isLanding)
         {
             PlayerLandingAnimation(landLeft);
-           
+
+        }
+
+        if (!isLanding)
+        {
+            if (movingHor == false && isGrounded)
+            {
+                PlayerAnimation(runSprite);
+
+            }
+
+            else if (direction > 0 && isGrounded)
+            {
+                PlayerAnimation(rightSprite);
+
+            }
+
+            else if (direction < 0 && isGrounded)
+            {
+                PlayerAnimation(leftSprite);
+
+            }
         }
     }
 
@@ -231,7 +230,7 @@ public class Player_Character_Controller : MonoBehaviour
     IEnumerator landingCoroutine()
     {
         isLanding = true;
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.3f);
         isLanding = false;
         lastY = 0;
     }

@@ -165,7 +165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   world: {fileID: 1629489648}
-  player: {fileID: 0}
+  player: {fileID: 1829013250}
 --- !u!65 &108856681
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -409,7 +409,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 0.95, z: -6.57}
+  m_FollowOffset: {x: 0, y: -0.32, z: -6.57}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -972,7 +972,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   world: {fileID: 1629489648}
-  player: {fileID: 0}
+  player: {fileID: 1829013250}
 --- !u!65 &893731271
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9853,7 +9853,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   world: {fileID: 1629489648}
-  player: {fileID: 0}
+  player: {fileID: 1829013250}
 --- !u!65 &1105847080
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9883,6 +9883,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1601570005110867135, guid: 6c497250b366c4205b2b28359b0c9705, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1601570005110867135, guid: 6c497250b366c4205b2b28359b0c9705, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1601570005110867135, guid: 6c497250b366c4205b2b28359b0c9705, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1601570005110867135, guid: 6c497250b366c4205b2b28359b0c9705, type: 3}
       propertyPath: m_LocalPosition.x
       value: 60.9
@@ -9925,7 +9937,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3774172148401331262, guid: 6c497250b366c4205b2b28359b0c9705, type: 3}
       propertyPath: m_Center.y
-      value: 0.04
+      value: 0.08
       objectReference: {fileID: 0}
     - target: {fileID: 6094135468307831642, guid: 6c497250b366c4205b2b28359b0c9705, type: 3}
       propertyPath: animationFPS
@@ -9933,11 +9945,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6094135468307831642, guid: 6c497250b366c4205b2b28359b0c9705, type: 3}
       propertyPath: animationFPSJump
-      value: 15
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 6094135468307831642, guid: 6c497250b366c4205b2b28359b0c9705, type: 3}
       propertyPath: animationFPSLand
-      value: 10
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 6151978746375146308, guid: 6c497250b366c4205b2b28359b0c9705, type: 3}
       propertyPath: m_Name
@@ -9994,7 +10006,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   world: {fileID: 1629489648}
-  player: {fileID: 0}
+  player: {fileID: 1829013250}
 --- !u!65 &1414246680
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10103,8 +10115,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1435085486}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.07024802, y: -2.2751705e-15, z: 1.6022203e-16, w: 0.99752957}
-  m_LocalPosition: {x: 60.9, y: -33.25, z: -8985.471}
+  m_LocalRotation: {x: -0.025847726, y: -4.185281e-15, z: -1.0821615e-16, w: 0.9996659}
+  m_LocalPosition: {x: 60.9, y: -34.52, z: -8985.471}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10447,14 +10459,19 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1755562123}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.07024802, y: -2.2751705e-15, z: 1.6022203e-16, w: 0.99752957}
-  m_LocalPosition: {x: 60.9, y: -33.25, z: -8985.471}
+  m_LocalRotation: {x: -0.025847726, y: -4.185281e-15, z: -1.0821615e-16, w: 0.9996659}
+  m_LocalPosition: {x: 60.9, y: -34.52, z: -8985.471}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 348042394}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -0.919, z: 0}
+--- !u!1 &1829013250 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6151978746375146308, guid: 6c497250b366c4205b2b28359b0c9705, type: 3}
+  m_PrefabInstance: {fileID: 1163433265}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
