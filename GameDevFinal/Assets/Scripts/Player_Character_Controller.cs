@@ -50,6 +50,10 @@ public class Player_Character_Controller : MonoBehaviour
 
     private bool isLanding;
 
+    private float lastY;
+
+   
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
@@ -64,52 +68,90 @@ public class Player_Character_Controller : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log(isLanding);
+
         movingHor = Input.GetAxisRaw("Horizontal") != 0;
 
         isGrounded = Physics.Raycast(transform.position, -transform.up, playerCollider.bounds.extents.y + groundDistance, groundLayer, QueryTriggerInteraction.Ignore);
 
         canJump = Input.GetKeyDown(KeyCode.Space);
 
-        if (movingHor == false && isGrounded)
+        if(lastY < 0 && isGrounded)
         {
-            PlayerAnimation(runSprite);
+            StartCoroutine(landingCoroutine());
         }
 
-        else if (direction > 0 && isGrounded)
+        if (movingHor == false && !isGrounded && playerRigid.velocity.y > 0)
         {
-            PlayerAnimation(rightSprite);
-        }
+            playerMaterial.mainTexture = jumpSprite[0];
 
-        else if (direction < 0 && isGrounded)
+
+        }
+        else if (movingHor == true && direction > 0 && !isGrounded && playerRigid.velocity.y > 0)
         {
-            PlayerAnimation(leftSprite);
+            playerMaterial.mainTexture = jumpRightSprite[0];
+
+        }
+        else if (movingHor == true && direction < 0 && !isGrounded && playerRigid.velocity.y > 0)
+        {
+            playerMaterial.mainTexture = jumpLeftSprite[0];
+
         }
 
         if (movingHor == false && !isGrounded && playerRigid.velocity.y < 0)
         {
             PlayerJumpAnimation(jumpSprite);
+            lastY = playerRigid.velocity.y;
         }
         else if (movingHor == true && direction > 0 && !isGrounded && playerRigid.velocity.y < 0)
         {
             PlayerJumpAnimation(jumpRightSprite);
+            lastY = playerRigid.velocity.y;
+
         }
         else if (movingHor == true && direction < 0 && !isGrounded && playerRigid.velocity.y < 0)
         {
             PlayerJumpAnimation(jumpLeftSprite);
+            lastY = playerRigid.velocity.y;
+
         }
 
         if (movingHor == false && isLanding)
         {
             PlayerLandingAnimation(landForward);
+
         }
 
         else if (movingHor == true && direction > 0 && isLanding)
         {
             PlayerLandingAnimation(landRight);
+
         }
         else if (movingHor == true && direction < 0 && isLanding)
         {
             PlayerLandingAnimation(landLeft);
+
+        }
+
+        if (!isLanding)
+        {
+            if (movingHor == false && isGrounded)
+            {
+                PlayerAnimation(runSprite);
+
+            }
+
+            else if (direction > 0 && isGrounded)
+            {
+                PlayerAnimation(rightSprite);
+
+            }
+
+            else if (direction < 0 && isGrounded)
+            {
+                PlayerAnimation(leftSprite);
+
+            }
         }
     }
 
@@ -176,30 +218,26 @@ public class Player_Character_Controller : MonoBehaviour
             if (currentFrameJump >= flipbookSprites.Length)
             {
                 playerMaterial.mainTexture = flipbookSprites[flipbookSprites.Length - 1];
-
-                if (isGrounded)
-                {
-
-                    StartCoroutine(landingCouroutine());
-                }
             }
             else
             {
                 playerMaterial.mainTexture = flipbookSprites[currentFrameJump];
+
             }   
         }
     }
 
-    IEnumerator landingCouroutine()
+    IEnumerator landingCoroutine()
     {
         isLanding = true;
-        yield return new WaitForSeconds(0.12f);
+        yield return new WaitForSeconds(0.3f);
         isLanding = false;
-
+        lastY = 0;
     }
 
     private void PlayerLandingAnimation(Texture[] flipbookSprites)
     {
+        Debug.Log("playing landing animation");
         animationTimer -= Time.deltaTime;
         if (animationTimer <= 0)
         {
