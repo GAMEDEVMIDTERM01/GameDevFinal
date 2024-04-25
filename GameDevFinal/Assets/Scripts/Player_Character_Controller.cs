@@ -35,10 +35,12 @@ public class Player_Character_Controller : MonoBehaviour
     public Texture[] landRight;
 
     [Header("Sound Effects")]
-    public AudioClip RunSound;
     public AudioClip JumpSound;
     public AudioClip LandSound;
 
+    //private bool canPlayRunSound;
+
+    private bool canPlayLandSound;
 
     public float forwardSpeed;
     public float sideSpeed;
@@ -62,6 +64,7 @@ public class Player_Character_Controller : MonoBehaviour
 
     private float lastY;
 
+    
     private void OnDrawGizmosSelected()
     {
         if(groundCheckPivot != null)
@@ -80,7 +83,7 @@ public class Player_Character_Controller : MonoBehaviour
 
         isGrounded = Physics.OverlapSphere(groundCheckPivot.position, groundCheckRadius, groundLayer).Length > 0;
 
-        Debug.Log("is the player grounded: " + isGrounded);
+        //Debug.Log("is the player grounded: " + isGrounded);
 
         canJump = Input.GetKeyDown(KeyCode.Space);
         if (canJump && isGrounded)
@@ -88,11 +91,6 @@ public class Player_Character_Controller : MonoBehaviour
             Jump();
         }
 
-
-        if (lastY < 0 && isGrounded)
-        {
-            StartCoroutine(landingCoroutine());
-        }
 
         if (movingHor == false && !isGrounded && playerRigid.velocity.y > 0)
         {
@@ -177,13 +175,26 @@ public class Player_Character_Controller : MonoBehaviour
         {
             MoveHorizontally();
         }
-        
+
+        if (lastY < 0 && isGrounded)
+        {
+            StartCoroutine(landingCoroutine());
+
+            if (canPlayLandSound)
+            {
+                playLandSound();
+            }
+        }
+        //if (isGrounded && canPlayRunSound)
+        //{
+        //    StartCoroutine(runningSounds());
+        //}
+
     }
 
     private void MoveForward()
     {
         playerRigid.velocity = new Vector3(playerRigid.velocity.x, playerRigid.velocity.y, forwardSpeed * Time.deltaTime);
-        audioSource.PlayOneShot(RunSound);
 
     }
 
@@ -194,14 +205,12 @@ public class Player_Character_Controller : MonoBehaviour
         float horizontalSpeed = direction * sideSpeed * Time.deltaTime;
 
         playerRigid.velocity = new Vector3(horizontalSpeed, playerRigid.velocity.y, playerRigid.velocity.z);
-
-        audioSource.PlayOneShot(RunSound);
     }
 
     private void Jump()
     {
         playerRigid.AddForce(Vector3.up * jumpForce*Time.fixedDeltaTime, ForceMode.Impulse);
-        audioSource.PlayOneShot(JumpSound);
+        audioSource.PlayOneShot(JumpSound, 1.0f);
         canJump = false;
     }
 
@@ -242,16 +251,31 @@ public class Player_Character_Controller : MonoBehaviour
 
     IEnumerator landingCoroutine()
     {
+        Debug.Log("its getting called");
         isLanding = true;
-        yield return new WaitForSeconds(0.2f);
-        audioSource.PlayOneShot(LandSound);
+        yield return new WaitForSeconds(0.3f);
         isLanding = false;
+        canPlayLandSound = true;
         lastY = 0;
     }
 
+   private void playLandSound()
+    {
+        audioSource.PlayOneShot(LandSound);
+        canPlayLandSound = false;
+    }
+
+
+    //IEnumerator runningSounds()
+    //{
+    //    canPlayRunSound = false;
+    //    yield return new WaitForSeconds(0.5f);
+    //    audioSource.PlayOneShot(RunSound, 1.0f);
+    //    canPlayRunSound = true;
+    //}
+
     private void PlayerLandingAnimation(Texture[] flipbookSprites)
     {
-        Debug.Log("playing landing animation");
         animationTimer -= Time.deltaTime;
         if (animationTimer <= 0)
         {
