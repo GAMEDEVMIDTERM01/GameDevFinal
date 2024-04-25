@@ -5,8 +5,12 @@ using UnityEngine;
 public class Player_Character_Controller : MonoBehaviour
 {
     public Rigidbody playerRigid;
+<<<<<<< HEAD
     public bool isGrounded;
     private float groundCheckRadius = 0.2f;
+=======
+    private bool isGrounded;
+>>>>>>> parent of 4f6eb17 (colliders)
 
     private bool canJump;
 
@@ -55,8 +59,15 @@ public class Player_Character_Controller : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
+<<<<<<< HEAD
         Gizmos.DrawWireSphere(transform.position, groundCheckRadius);
     }
+=======
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(transform.position, transform.position - new Vector3(0, playerCollider.bounds.extents.y + groundDistance, 0));
+    }
+    
+>>>>>>> parent of 4f6eb17 (colliders)
 
     void Start()
     {
@@ -68,7 +79,11 @@ public class Player_Character_Controller : MonoBehaviour
 
         movingHor = Input.GetAxisRaw("Horizontal") != 0;
 
+<<<<<<< HEAD
         isGrounded = Physics.OverlapSphere(transform.position, groundCheckRadius, groundLayer).Length > 0;
+=======
+        isGrounded = Physics.Raycast(transform.position, -transform.up, playerCollider.bounds.extents.y + groundDistance, groundLayer, QueryTriggerInteraction.Ignore);
+>>>>>>> parent of 4f6eb17 (colliders)
 
         Debug.Log("is the player grounded: " + isGrounded);
 
