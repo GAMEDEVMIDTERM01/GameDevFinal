@@ -477,9 +477,9 @@ GameObject:
   - component: {fileID: 4398846458547599397}
   - component: {fileID: 239260583304898845}
   - component: {fileID: 9218932975821329081}
-  - component: {fileID: 2055821358479605998}
+  - component: {fileID: 4495507812368658993}
   m_Layer: 7
-  m_Name: Cube
+  m_Name: Bottom Detect
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -494,7 +494,7 @@ Transform:
   m_GameObject: {fileID: 7896260054588655258}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.006, y: 0.024, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -552,8 +552,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2055821358479605998
-BoxCollider:
+--- !u!136 &4495507812368658993
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -570,6 +570,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.31, y: 0.54, z: 0.16}
+  serializedVersion: 2
+  m_Radius: 0.33
+  m_Height: 0.36
+  m_Direction: 1
   m_Center: {x: 0, y: -0.34, z: 0}
