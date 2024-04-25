@@ -340,9 +340,9 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 5baa4fd4715f34e6eb0698725a0183fb, type: 3}
   - {fileID: 2800000, guid: 5baa4fd4715f34e6eb0698725a0183fb, type: 3}
   - {fileID: 2800000, guid: 905becd29a661440ab53bbd832367786, type: 3}
-  forwardSpeed: 100
-  sideSpeed: 100
-  jumpForce: 250
+  forwardSpeed: 75
+  sideSpeed: 75
+  jumpForce: 200
   playerCollider: {fileID: 8131489379791649152}
 --- !u!65 &8131489379791649152
 BoxCollider:
@@ -470,5 +470,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.4, y: 0.42, z: 0.16}
+  m_Size: {x: 0.76, y: 0.61, z: 0.16}
   m_Center: {x: 0, y: -0.34, z: 0}

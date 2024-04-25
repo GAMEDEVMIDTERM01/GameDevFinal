@@ -36,7 +36,7 @@ public class Player_Character_Controller : MonoBehaviour
     public float sideSpeed;
     public float jumpForce;
 
-    public BoxCollider playerCollider;
+    public SphereCollider playerCollider;
     private Material playerMaterial;
 
     private float animationTimer;
@@ -75,8 +75,13 @@ public class Player_Character_Controller : MonoBehaviour
         Debug.Log("is the player grounded: " + isGrounded);
 
         canJump = Input.GetKeyDown(KeyCode.Space);
+        if (canJump && isGrounded)
+        {
+            Jump();
+        }
 
-        if(lastY < 0 && isGrounded)
+
+        if (lastY < 0 && isGrounded)
         {
             StartCoroutine(landingCoroutine());
         }
@@ -165,10 +170,10 @@ public class Player_Character_Controller : MonoBehaviour
             MoveHorizontally();
         }
         
-        if (canJump && isGrounded)
-        {
-            Jump();
-        }
+        //if (canJump && isGrounded)
+        //{
+        //    Jump();
+        //}
     }
 
     private void MoveForward()
@@ -189,7 +194,7 @@ public class Player_Character_Controller : MonoBehaviour
 
     private void Jump()
     {
-        playerRigid.AddForce(Vector3.up * jumpForce*Time.deltaTime, ForceMode.Impulse);
+        playerRigid.AddForce(Vector3.up * jumpForce*Time.fixedDeltaTime, ForceMode.Impulse);
         canJump = false;
     }
 

@@ -12,6 +12,7 @@ public class RotateWorld : MonoBehaviour
     public Transform world;
 
     private float lastPlayerY;
+    private float playerBorderY;
     private float heightReductionFactor = 0.1f;
 
     public void OnPlayerDetected(Quaternion newTargetRotation)
@@ -23,15 +24,15 @@ public class RotateWorld : MonoBehaviour
 
         targetRotation = newTargetRotation;
 
-        lastPlayerY = player.transform.position.y - heightReductionFactor;
-        
+        lastPlayerY = player.transform.position.y;
+        playerBorderY = lastPlayerY - heightReductionFactor;
     }
 
     private void Update()
     {
         if (targetRotation != transform.rotation)
         {
-            if(player.transform.position.y < lastPlayerY)
+            if(player.transform.position.y < playerBorderY)
             {
                 player.transform.position = new Vector3(player.transform.position.x, lastPlayerY, player.transform.position.z);
             }
