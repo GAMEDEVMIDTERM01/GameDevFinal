@@ -9,17 +9,19 @@ public class RotateWorld : MonoBehaviour
     public float rotationSpeed;
     public Transform world;
 
-    private BoxCollider rotationCollider;
+    public Player_Character_Controller myPlayer;
 
-    public void OnPlayerDetected(Quaternion newTargetRotation, Transform playerTransform, BoxCollider colliderDetected)
+    private float _lastPlayerHeight;
+
+    public void OnPlayerDetected(Quaternion newTargetRotation)
     {
+        Debug.Log(newTargetRotation);
         world.transform.parent = null;
-        transform.position = playerTransform.position;
+        transform.position = myPlayer.transform.position;
         world.transform.parent = transform;
 
         targetRotation = newTargetRotation;
-
-        rotationCollider = colliderDetected;
+        _lastPlayerHeight = myPlayer.transform.position.y;
         
     }
 
@@ -27,10 +29,11 @@ public class RotateWorld : MonoBehaviour
     {
         if (targetRotation != transform.rotation)
         {
-
-            rotationCollider.isTrigger = false;
+            if(myPlayer.transform.position.y < _lastPlayerHeight)
+            {
+                myPlayer.transform.position = new Vector3(myPlayer.transform.position.x, _lastPlayerHeight, myPlayer.transform.position.z);
+            }
             transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-            rotationCollider.isTrigger = true;
         }
     }
 

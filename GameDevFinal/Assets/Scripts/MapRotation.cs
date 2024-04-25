@@ -8,16 +8,14 @@ public class MapRotation : MonoBehaviour
     public GameObject world;
     public GameObject player;
 
+    private Quaternion rotation;
+
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject == player)
+        if (collision.gameObject.CompareTag(player.tag))
         {
-            Debug.Log("player detected");
-            world.GetComponent<RotateWorld>().OnPlayerDetected(transform.localRotation, collision.transform, this.gameObject.GetComponent<BoxCollider>());
-            
+            world.GetComponent<RotateWorld>().OnPlayerDetected(transform.localRotation);
         }
     }
-
-
 
 }
