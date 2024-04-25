@@ -34,7 +34,7 @@ public class Player_Character_Controller : MonoBehaviour
     public float sideSpeed;
     public float jumpForce;
 
-    public CapsuleCollider playerCollider;
+    public BoxCollider playerCollider;
     private Material playerMaterial;
 
     private float animationTimer;
@@ -52,8 +52,6 @@ public class Player_Character_Controller : MonoBehaviour
 
     private float lastY;
 
-   
-
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
@@ -68,11 +66,12 @@ public class Player_Character_Controller : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(isLanding);
 
         movingHor = Input.GetAxisRaw("Horizontal") != 0;
 
         isGrounded = Physics.Raycast(transform.position, -transform.up, playerCollider.bounds.extents.y + groundDistance, groundLayer, QueryTriggerInteraction.Ignore);
+
+        Debug.Log("is the player grounded: " + isGrounded);
 
         canJump = Input.GetKeyDown(KeyCode.Space);
 

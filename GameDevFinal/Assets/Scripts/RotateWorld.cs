@@ -9,13 +9,17 @@ public class RotateWorld : MonoBehaviour
     public float rotationSpeed;
     public Transform world;
 
-    public void OnPlayerDetected(Quaternion newTargetRotation, Transform playerTransform)
+    private BoxCollider rotationCollider;
+
+    public void OnPlayerDetected(Quaternion newTargetRotation, Transform playerTransform, BoxCollider colliderDetected)
     {
         world.transform.parent = null;
         transform.position = playerTransform.position;
         world.transform.parent = transform;
 
         targetRotation = newTargetRotation;
+
+        rotationCollider = colliderDetected;
         
     }
 
@@ -24,8 +28,9 @@ public class RotateWorld : MonoBehaviour
         if (targetRotation != transform.rotation)
         {
 
-            //TO DO: Rotate around the currentRotationAxis to reach the target rotation
+            rotationCollider.isTrigger = false;
             transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+            rotationCollider.isTrigger = true;
         }
     }
 
