@@ -9,6 +9,8 @@ public class Player_Character_Controller : MonoBehaviour
     public bool isGrounded;
     private float groundCheckRadius = 0.2f;
 
+    public AudioSource audioSource;
+
     private bool canJump;
 
     public float groundDistance;
@@ -31,6 +33,12 @@ public class Player_Character_Controller : MonoBehaviour
     public Texture[] landForward;
     public Texture[] landLeft;
     public Texture[] landRight;
+
+    [Header("Sound Effects")]
+    public AudioClip RunSound;
+    public AudioClip JumpSound;
+    public AudioClip LandSound;
+
 
     public float forwardSpeed;
     public float sideSpeed;
@@ -170,16 +178,13 @@ public class Player_Character_Controller : MonoBehaviour
             MoveHorizontally();
         }
         
-        //if (canJump && isGrounded)
-        //{
-        //    Jump();
-        //}
     }
 
     private void MoveForward()
     {
         playerRigid.velocity = new Vector3(playerRigid.velocity.x, playerRigid.velocity.y, forwardSpeed * Time.deltaTime);
-        
+        audioSource.PlayOneShot(RunSound);
+
     }
 
     private void MoveHorizontally()
@@ -190,11 +195,13 @@ public class Player_Character_Controller : MonoBehaviour
 
         playerRigid.velocity = new Vector3(horizontalSpeed, playerRigid.velocity.y, playerRigid.velocity.z);
 
+        audioSource.PlayOneShot(RunSound);
     }
 
     private void Jump()
     {
         playerRigid.AddForce(Vector3.up * jumpForce*Time.fixedDeltaTime, ForceMode.Impulse);
+        audioSource.PlayOneShot(JumpSound);
         canJump = false;
     }
 
@@ -236,7 +243,8 @@ public class Player_Character_Controller : MonoBehaviour
     IEnumerator landingCoroutine()
     {
         isLanding = true;
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.2f);
+        audioSource.PlayOneShot(LandSound);
         isLanding = false;
         lastY = 0;
     }
