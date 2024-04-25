@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 4d3bf7435d7de3b4d9eb95914df475ec
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 65426
+  packageName: Stone portal
+  packageVersion: 1.1
+  assetPath: Assets/OrdossFX/StonePortal/Scripts/StonePortal_RandomMoves.cs
+  uploadId: 469210
