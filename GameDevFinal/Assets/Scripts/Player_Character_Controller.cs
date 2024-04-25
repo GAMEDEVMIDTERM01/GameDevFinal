@@ -6,6 +6,7 @@ public class Player_Character_Controller : MonoBehaviour
 {
     public Rigidbody playerRigid;
     public bool isGrounded;
+    private float groundCheckRadius = 0.2f;
 
     private bool canJump;
 
@@ -52,6 +53,11 @@ public class Player_Character_Controller : MonoBehaviour
 
     private float lastY;
 
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(transform.position, groundCheckRadius);
+    }
+
     void Start()
     {
         playerMaterial = GetComponent<Renderer>().material;
@@ -62,7 +68,7 @@ public class Player_Character_Controller : MonoBehaviour
 
         movingHor = Input.GetAxisRaw("Horizontal") != 0;
 
-        isGrounded = Physics.OverlapSphere(transform.position, 0.2f, groundLayer) != null;
+        isGrounded = Physics.OverlapSphere(transform.position, groundCheckRadius, groundLayer).Length > 0;
 
         Debug.Log("is the player grounded: " + isGrounded);
 
@@ -182,6 +188,7 @@ public class Player_Character_Controller : MonoBehaviour
     private void Jump()
     {
         playerRigid.AddForce(Vector3.up * jumpForce*Time.deltaTime, ForceMode.Impulse);
+        canJump = false;
     }
 
     private void PlayerAnimation(Texture[] flipbookSprites)
