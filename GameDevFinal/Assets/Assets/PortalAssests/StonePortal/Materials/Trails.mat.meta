@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: fb3e783d8b38e5840910a96b54847f65
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 65426
+  packageName: Stone portal
+  packageVersion: 1.1
+  assetPath: Assets/OrdossFX/StonePortal/Materials/Trails.mat
+  uploadId: 469210

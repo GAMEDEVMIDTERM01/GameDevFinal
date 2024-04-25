@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 96c719e61f2d78640a836a83b1dd1018
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures: []
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 65426
+  packageName: Stone portal
+  packageVersion: 1.1
+  assetPath: Assets/OrdossFX/StonePortal/Shaders/StonePortal_BlendHDR.shader
+  uploadId: 469210

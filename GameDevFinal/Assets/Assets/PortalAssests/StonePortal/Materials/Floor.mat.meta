@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 925d3cbbce20a5140b9df523d69fb1e7
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 65426
+  packageName: Stone portal
+  packageVersion: 1.1
+  assetPath: Assets/OrdossFX/StonePortal/Materials/Floor.mat
+  uploadId: 469210
