@@ -5,7 +5,8 @@ using UnityEngine;
 public class Player_Character_Controller : MonoBehaviour
 {
     public Rigidbody playerRigid;
-    private bool isGrounded;
+    public bool isGrounded;
+    private float groundCheckRadius = 0.2f;
 
     private bool canJump;
 
@@ -54,10 +55,8 @@ public class Player_Character_Controller : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.position, transform.position - new Vector3(0, playerCollider.bounds.extents.y + groundDistance, 0));
+        Gizmos.DrawWireSphere(transform.position, groundCheckRadius);
     }
-    
 
     void Start()
     {
@@ -69,7 +68,7 @@ public class Player_Character_Controller : MonoBehaviour
 
         movingHor = Input.GetAxisRaw("Horizontal") != 0;
 
-        isGrounded = Physics.Raycast(transform.position, -transform.up, playerCollider.bounds.extents.y + groundDistance, groundLayer, QueryTriggerInteraction.Ignore);
+        isGrounded = Physics.OverlapSphere(transform.position, groundCheckRadius, groundLayer).Length > 0;
 
         Debug.Log("is the player grounded: " + isGrounded);
 
@@ -189,6 +188,7 @@ public class Player_Character_Controller : MonoBehaviour
     private void Jump()
     {
         playerRigid.AddForce(Vector3.up * jumpForce*Time.deltaTime, ForceMode.Impulse);
+        canJump = false;
     }
 
     private void PlayerAnimation(Texture[] flipbookSprites)
