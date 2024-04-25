@@ -10,14 +10,11 @@ public class MapRotation : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject == player)
+        if (collision.gameObject.CompareTag(player.tag))
         {
-            Debug.Log("player detected");
-            world.GetComponent<RotateWorld>().OnPlayerDetected(transform.localRotation, collision.transform, this.gameObject.GetComponent<BoxCollider>());
+
+            world.GetComponent<RotateWorld>().OnPlayerDetected(transform.localRotation);
             
         }
     }
-
-
-
 }

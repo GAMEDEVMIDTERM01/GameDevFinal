@@ -373,18 +373,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1601570005110867135, guid: 6c497250b366c4205b2b28359b0c9705, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1601570005110867135, guid: 6c497250b366c4205b2b28359b0c9705, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1601570005110867135, guid: 6c497250b366c4205b2b28359b0c9705, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1601570005110867135, guid: 6c497250b366c4205b2b28359b0c9705, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.36
       objectReference: {fileID: 0}
@@ -424,21 +412,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2888669933499487970, guid: 6c497250b366c4205b2b28359b0c9705, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.2227351
+    - target: {fileID: 2055821358479605998, guid: 6c497250b366c4205b2b28359b0c9705, type: 3}
+      propertyPath: m_Size.x
+      value: 0.4
       objectReference: {fileID: 0}
-    - target: {fileID: 2888669933499487970, guid: 6c497250b366c4205b2b28359b0c9705, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.31831977
-      objectReference: {fileID: 0}
-    - target: {fileID: 2888669933499487970, guid: 6c497250b366c4205b2b28359b0c9705, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.8674532
-      objectReference: {fileID: 0}
-    - target: {fileID: 2888669933499487970, guid: 6c497250b366c4205b2b28359b0c9705, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.23
+    - target: {fileID: 2055821358479605998, guid: 6c497250b366c4205b2b28359b0c9705, type: 3}
+      propertyPath: m_Center.y
+      value: -0.34
       objectReference: {fileID: 0}
     - target: {fileID: 6151978746375146308, guid: 6c497250b366c4205b2b28359b0c9705, type: 3}
       propertyPath: m_Name
@@ -34529,9 +34509,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69cf9b6bde5a34d8a9c897d7ccde1ebd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 812476845}
   rotationSpeed: 600
   world: {fileID: 1725457338}
-  myPlayer: {fileID: 812476845}
 --- !u!4 &1981376255
 Transform:
   m_ObjectHideFlags: 0
