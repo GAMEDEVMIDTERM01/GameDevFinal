@@ -12,6 +12,7 @@ public class RotateWorld : MonoBehaviour
     public Transform world;
 
     private float lastPlayerY;
+    private float heightReductionFactor = 0.1f;
 
     public void OnPlayerDetected(Quaternion newTargetRotation)
     {
@@ -22,7 +23,7 @@ public class RotateWorld : MonoBehaviour
 
         targetRotation = newTargetRotation;
 
-        lastPlayerY = player.transform.position.y;
+        lastPlayerY = player.transform.position.y - heightReductionFactor;
         
     }
 

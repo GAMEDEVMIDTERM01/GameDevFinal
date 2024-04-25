@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player_Character_Controller : MonoBehaviour
 {
     public Rigidbody playerRigid;
+    public Transform groundCheckPivot;
     public bool isGrounded;
     private float groundCheckRadius = 0.2f;
 
@@ -55,7 +56,8 @@ public class Player_Character_Controller : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        Gizmos.DrawWireSphere(transform.position, groundCheckRadius);
+        if(groundCheckPivot != null)
+            Gizmos.DrawWireSphere(groundCheckPivot.position, groundCheckRadius);
     }
 
     void Start()
@@ -68,7 +70,7 @@ public class Player_Character_Controller : MonoBehaviour
 
         movingHor = Input.GetAxisRaw("Horizontal") != 0;
 
-        isGrounded = Physics.OverlapSphere(transform.position, groundCheckRadius, groundLayer).Length > 0;
+        isGrounded = Physics.OverlapSphere(groundCheckPivot.position, groundCheckRadius, groundLayer).Length > 0;
 
         Debug.Log("is the player grounded: " + isGrounded);
 

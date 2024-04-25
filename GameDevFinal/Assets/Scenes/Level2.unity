@@ -412,14 +412,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2055821358479605998, guid: 6c497250b366c4205b2b28359b0c9705, type: 3}
-      propertyPath: m_Size.x
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2055821358479605998, guid: 6c497250b366c4205b2b28359b0c9705, type: 3}
-      propertyPath: m_Center.y
-      value: -0.34
-      objectReference: {fileID: 0}
     - target: {fileID: 6151978746375146308, guid: 6c497250b366c4205b2b28359b0c9705, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1057,7 +1049,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1725457332}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 0d15106928690471498709bfd84be9dc, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
