@@ -23,6 +23,9 @@ public class MapRotation : MonoBehaviour
     {
        yield return new WaitForSeconds(0.1f);
 
+
+        // maybe have 2 conditions, one when raycast is hitting one when not
+
         if (player.GetComponent<Player_Character_Controller>().shouldRotate && rotation != world.transform.rotation)
         {
             Debug.Log("helping rotate is getting called");
