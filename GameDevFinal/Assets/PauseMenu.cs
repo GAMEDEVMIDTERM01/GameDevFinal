@@ -10,11 +10,17 @@ public class PauseMenu : MonoBehaviour
 
     [SerializeField] GameObject pauseMenu;
 
+    [SerializeField] GameObject pauseForGame;
+
 
     public void PauseinGame()
     {
         pauseMenu.SetActive(true);
+        pauseForGame.SetActive(false);
         Time.timeScale = 0;
+
+
+
     }
 
     public void Home()
@@ -22,16 +28,11 @@ public class PauseMenu : MonoBehaviour
         SceneManager.LoadScene("Main Menu");
     }
 
-    public void SmallPause()
+    public void Resume()
     {
         pauseMenu.SetActive(false);
+        pauseForGame.SetActive(true);
         Time.timeScale = 1;
     }
 
-
-    public void BigPause()
-    {
-        pauseMenu.SetActive(false);
-        Time.timeScale = 1;
-    }
-}
+ }
