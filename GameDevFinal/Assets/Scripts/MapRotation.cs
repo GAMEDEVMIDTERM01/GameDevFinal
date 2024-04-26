@@ -12,9 +12,21 @@ public class MapRotation : MonoBehaviour
     {
         if (collision.gameObject.CompareTag(player.tag))
         {
-
             world.GetComponent<RotateWorld>().OnPlayerDetected(transform.localRotation);
+
+            StartCoroutine(adjustRotation(transform.localRotation));
             
+        }
+    }
+
+    IEnumerator adjustRotation(Quaternion rotation)
+    {
+       yield return new WaitForSeconds(0.1f);
+
+        if (player.GetComponent<Player_Character_Controller>().shouldRotate && rotation != world.transform.rotation)
+        {
+            Debug.Log("helping rotate is getting called");
+            world.GetComponent<RotateWorld>().OnPlayerDetected(rotation);
         }
     }
 }

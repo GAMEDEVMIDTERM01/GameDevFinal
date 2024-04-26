@@ -8,6 +8,9 @@ public class Player_Character_Controller : MonoBehaviour
     public Transform groundCheckPivot;
     public bool isGrounded;
     private float groundCheckRadius = 0.2f;
+    private float rotateCheckDistance = 0.2f;
+
+    public bool shouldRotate;
 
     public AudioSource audioSource;
 
@@ -17,6 +20,7 @@ public class Player_Character_Controller : MonoBehaviour
 
     [Header("Ground Checking")]
     public LayerMask groundLayer;
+    public LayerMask rotateLayer;
 
     [Header("Frames Per Second")]
     public float animationFPS;
@@ -69,7 +73,10 @@ public class Player_Character_Controller : MonoBehaviour
     {
         if(groundCheckPivot != null)
             Gizmos.DrawWireSphere(groundCheckPivot.position, groundCheckRadius);
-    }
+
+        //Gizmos.DrawLine(groundCheckPivot.position, groundCheckPivot.position - Vector3.up * rotateCheckDistance);
+    
+}
 
     void Start()
     {
@@ -83,7 +90,9 @@ public class Player_Character_Controller : MonoBehaviour
 
         isGrounded = Physics.OverlapSphere(groundCheckPivot.position, groundCheckRadius, groundLayer).Length > 0;
 
-        //Debug.Log("is the player grounded: " + isGrounded);
+        shouldRotate = Physics.Raycast(groundCheckPivot.position, -Vector3.up, rotateCheckDistance, rotateLayer);
+
+        
 
         canJump = Input.GetKeyDown(KeyCode.Space);
         if (canJump && isGrounded)
@@ -251,7 +260,6 @@ public class Player_Character_Controller : MonoBehaviour
 
     IEnumerator landingCoroutine()
     {
-        Debug.Log("its getting called");
         isLanding = true;
         yield return new WaitForSeconds(0.3f);
         isLanding = false;

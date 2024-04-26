@@ -164,11 +164,15 @@ MonoBehaviour:
   playerRigid: {fileID: 1516164474846556546}
   groundCheckPivot: {fileID: 4860593541015222907}
   isGrounded: 0
+  shouldRotate: 0
   audioSource: {fileID: 8465787150193865142}
   groundDistance: 0.1
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  rotateLayer:
+    serializedVersion: 2
+    m_Bits: 128
   animationFPS: 30
   animationFPSJump: 30
   animationFPSLand: 30
