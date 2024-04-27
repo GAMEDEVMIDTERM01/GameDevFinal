@@ -8,28 +8,51 @@ public class MapRotation : MonoBehaviour
     public GameObject world;
     public GameObject player;
 
+    //public GameObject[] rotationColliders;
+
+    //private Transform bestRotation;
+    //private Quaternion colliderRotation;
+
     private void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.CompareTag(player.tag))
         {
+            //Debug.Log("theres a collision detected");
             world.GetComponent<RotateWorld>().OnPlayerDetected(transform.localRotation);
-
-            StartCoroutine(adjustRotation(transform.localRotation));
-            
+            //colliderRotation = transform.localRotation;
         }
     }
 
-    IEnumerator adjustRotation(Quaternion rotation)
+    /*
+
+    void GetClosestRotation(GameObject[] colliders)
     {
-       yield return new WaitForSeconds(0.1f);
-
-
-        // maybe have 2 conditions, one when raycast is hitting one when not
-
-        if (player.GetComponent<Player_Character_Controller>().shouldRotate && rotation != world.transform.rotation)
+        Vector3 currentPosition = player.transform.position;
+        foreach (GameObject potentialRotation in colliders)
         {
-            Debug.Log("helping rotate is getting called");
-            world.GetComponent<RotateWorld>().OnPlayerDetected(rotation);
+            Transform potentialRotationTransform = potentialRotation.transform;
+            Vector3 directionToTarget = potentialRotationTransform.position;
+            if (directionToTarget == currentPosition)
+            {
+                bestRotation = potentialRotationTransform;
+            }
+        }
+
+        if(bestRotation == transform)
+        {
+            Debug.Log("player hit position with collision detection");
+            world.GetComponent<RotateWorld>().OnPlayerDetected(colliderRotation);
+        }
+        else
+        {
+            Debug.Log("player hit position without collision detection");
+            world.GetComponent<RotateWorld>().OnPlayerDetected(bestRotation.localRotation);
         }
     }
+
+    private void FixedUpdate()
+    {
+        GetClosestRotation(rotationColliders);
+    }
+    */
 }
