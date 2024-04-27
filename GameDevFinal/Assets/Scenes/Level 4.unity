@@ -189,6 +189,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   world: {fileID: 2131505308}
   player: {fileID: 1807447177}
+  rotationColliders:
+  - {fileID: 77167339}
+  - {fileID: 1760689613}
+  - {fileID: 683322897}
+  - {fileID: 1751032931}
+  - {fileID: 1541631255}
+  - {fileID: 572650751}
+  - {fileID: 1173696039}
+  - {fileID: 322597851}
 --- !u!1 &322597850
 GameObject:
   m_ObjectHideFlags: 0
@@ -236,6 +245,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   world: {fileID: 2131505308}
   player: {fileID: 1807447177}
+  rotationColliders:
+  - {fileID: 77167339}
+  - {fileID: 1760689613}
+  - {fileID: 683322897}
+  - {fileID: 1751032931}
+  - {fileID: 1173696039}
+  - {fileID: 1541631255}
+  - {fileID: 322597851}
+  - {fileID: 572650751}
 --- !u!65 &322597853
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -304,6 +322,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   world: {fileID: 2131505308}
   player: {fileID: 1807447177}
+  rotationColliders:
+  - {fileID: 77167339}
+  - {fileID: 1760689613}
+  - {fileID: 683322897}
+  - {fileID: 1751032931}
+  - {fileID: 1173696039}
+  - {fileID: 1541631255}
+  - {fileID: 322597851}
+  - {fileID: 572650751}
 --- !u!65 &572650753
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -447,6 +474,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   world: {fileID: 2131505308}
   player: {fileID: 1807447177}
+  rotationColliders:
+  - {fileID: 77167339}
+  - {fileID: 1760689613}
+  - {fileID: 683322897}
+  - {fileID: 1751032931}
+  - {fileID: 1751032931}
+  - {fileID: 1541631255}
+  - {fileID: 322597851}
+  - {fileID: 572650751}
 --- !u!65 &683322899
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -34204,6 +34240,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   world: {fileID: 2131505308}
   player: {fileID: 1807447177}
+  rotationColliders:
+  - {fileID: 77167339}
+  - {fileID: 1760689613}
+  - {fileID: 683322897}
+  - {fileID: 1751032931}
+  - {fileID: 1173696039}
+  - {fileID: 1541631255}
+  - {fileID: 322597851}
+  - {fileID: 572650751}
 --- !u!1001 &1378874137
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34542,6 +34587,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   world: {fileID: 2131505308}
   player: {fileID: 1807447177}
+  rotationColliders:
+  - {fileID: 77167339}
+  - {fileID: 1760689613}
+  - {fileID: 683322897}
+  - {fileID: 1751032931}
+  - {fileID: 1173696039}
+  - {fileID: 1541631255}
+  - {fileID: 322597851}
+  - {fileID: 572650751}
 --- !u!1 &1751032930
 GameObject:
   m_ObjectHideFlags: 0
@@ -34589,6 +34643,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   world: {fileID: 2131505308}
   player: {fileID: 1807447177}
+  rotationColliders:
+  - {fileID: 77167339}
+  - {fileID: 1760689613}
+  - {fileID: 683322897}
+  - {fileID: 1751032931}
+  - {fileID: 1173696039}
+  - {fileID: 1541631255}
+  - {fileID: 322597851}
+  - {fileID: 572650751}
 --- !u!65 &1751032933
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -34680,6 +34743,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   world: {fileID: 2131505308}
   player: {fileID: 1807447177}
+  rotationColliders:
+  - {fileID: 77167339}
+  - {fileID: 1760689613}
+  - {fileID: 683322897}
+  - {fileID: 1751032931}
+  - {fileID: 1173696039}
+  - {fileID: 1541631255}
+  - {fileID: 322597851}
+  - {fileID: 572650751}
 --- !u!1 &1790458249
 GameObject:
   m_ObjectHideFlags: 0
