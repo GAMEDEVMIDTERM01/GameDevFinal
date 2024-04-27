@@ -8,28 +8,42 @@ public class MapRotation : MonoBehaviour
     public GameObject world;
     public GameObject player;
 
+    //public Quaternion[] rotationColliders;
+
+    //private Quaternion bestRotation;
+    //private Quaternion colliderRotation;
+
     private void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.CompareTag(player.tag))
         {
+            Debug.Log("theres a collision detected");
             world.GetComponent<RotateWorld>().OnPlayerDetected(transform.localRotation);
 
-            StartCoroutine(adjustRotation(transform.localRotation));
-            
+            //colliderRotation = transform.localRotation;
         }
     }
 
-    IEnumerator adjustRotation(Quaternion rotation)
-    {
-       yield return new WaitForSeconds(0.1f);
+    //void GetClosestRotation(Quaternion[] colliders)
+    //{
+    //    float closestDistanceSqr = Mathf.Infinity;
+    //    Vector3 currentPosition = player.transform.position;
+    //    foreach (Transform potentialRotation in colliders)
+    //    {
+    //        Vector3 directionToTarget = potentialRotation.position - currentPosition;
+    //        float dSqrToTarget = directionToTarget.sqrMagnitude;
+    //        if (dSqrToTarget < closestDistanceSqr)
+    //        {
+    //            closestDistanceSqr = dSqrToTarget;
+    //            bestRotation = potentialRotation;
+    //        }
+    //    }
+    //}
+
+    //private void FixedUpdate()
+    //{
+    //    GetClosestRotation(rotationColliders);
+    //}
 
 
-        // maybe have 2 conditions, one when raycast is hitting one when not
-
-        if (player.GetComponent<Player_Character_Controller>().shouldRotate && rotation != world.transform.rotation)
-        {
-            Debug.Log("helping rotate is getting called");
-            world.GetComponent<RotateWorld>().OnPlayerDetected(rotation);
-        }
-    }
 }

@@ -8,9 +8,9 @@ public class Player_Character_Controller : MonoBehaviour
     public Transform groundCheckPivot;
     public bool isGrounded;
     private float groundCheckRadius = 0.2f;
-    private float rotateCheckDistance = 0.2f;
+    //private float rotateCheckDistance = 0.2f;
 
-    public bool shouldRotate;
+    //public bool shouldRotate;
 
     public AudioSource audioSource;
 
@@ -20,7 +20,7 @@ public class Player_Character_Controller : MonoBehaviour
 
     [Header("Ground Checking")]
     public LayerMask groundLayer;
-    public LayerMask rotateLayer;
+    //public LayerMask rotateLayer;
 
     [Header("Frames Per Second")]
     public float animationFPS;
@@ -90,7 +90,7 @@ public class Player_Character_Controller : MonoBehaviour
 
         isGrounded = Physics.OverlapSphere(groundCheckPivot.position, groundCheckRadius, groundLayer).Length > 0;
 
-        shouldRotate = Physics.Raycast(groundCheckPivot.position, -Vector3.up, rotateCheckDistance, rotateLayer);
+        //shouldRotate = Physics.Raycast(groundCheckPivot.position, -Vector3.up, rotateCheckDistance, rotateLayer);
 
         
 
