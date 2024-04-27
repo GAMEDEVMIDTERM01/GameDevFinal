@@ -351,6 +351,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpaceBackground
       objectReference: {fileID: 0}
+    - target: {fileID: 7332151022332197392, guid: 1548d113223b840bda8c1cce76f06a52, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 572.456
+      objectReference: {fileID: 0}
+    - target: {fileID: 7332151022332197392, guid: 1548d113223b840bda8c1cce76f06a52, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -26.921
+      objectReference: {fileID: 0}
     - target: {fileID: 7637381548474590834, guid: 1548d113223b840bda8c1cce76f06a52, type: 3}
       propertyPath: m_Pivot.x
       value: 0
