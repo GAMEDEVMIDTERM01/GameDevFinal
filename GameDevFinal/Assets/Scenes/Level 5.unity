@@ -33869,15 +33869,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 972513589}
-  rotationColliders:
-  - {fileID: 711443737}
-  - {fileID: 1873190089}
-  - {fileID: 1653747761}
-  - {fileID: 526411509}
-  - {fileID: 2055729269}
-  - {fileID: 221249844}
-  - {fileID: 1071139571}
-  - {fileID: 664294236}
   rotationSpeed: 600
   world: {fileID: 620019147}
 --- !u!4 &1183197379
