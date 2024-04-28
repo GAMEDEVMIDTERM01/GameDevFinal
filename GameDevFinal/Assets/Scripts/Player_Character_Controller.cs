@@ -8,12 +8,9 @@ public class Player_Character_Controller : MonoBehaviour
     public Transform groundCheckPivot;
     public bool isGrounded;
     private float groundCheckRadius = 0.2f;
-    
-
     public AudioSource audioSource;
 
     private bool canJump;
-
     public float groundDistance;
 
     [Header("Ground Checking")]
@@ -39,7 +36,6 @@ public class Player_Character_Controller : MonoBehaviour
     public AudioClip JumpSound;
     public AudioClip LandSound;
 
-
     private bool canPlayLandSound;
 
     public float forwardSpeed;
@@ -53,24 +49,16 @@ public class Player_Character_Controller : MonoBehaviour
     private int currentFrame;
 
     private int currentFrameJump;
-
     private int currentFrameLand;
-
     private bool movingHor;
-
     private float direction;
-
     private bool isLanding;
-
     private float lastY;
 
-    
     private void OnDrawGizmosSelected()
     {
         if(groundCheckPivot != null)
             Gizmos.DrawWireSphere(groundCheckPivot.position, groundCheckRadius);
-
-       
     }
 
     void Start()
@@ -80,12 +68,8 @@ public class Player_Character_Controller : MonoBehaviour
 
     private void Update()
     {
-
         movingHor = Input.GetAxisRaw("Horizontal") != 0;
-
         isGrounded = Physics.OverlapSphere(groundCheckPivot.position, groundCheckRadius, groundLayer).Length > 0;
-
-        //Debug.Log(isGrounded);
         canJump = Input.GetKeyDown(KeyCode.Space);
         if (canJump && isGrounded)
         {
@@ -166,7 +150,6 @@ public class Player_Character_Controller : MonoBehaviour
         }
     }
 
-
     private void FixedUpdate()
     {
         MoveForward();
@@ -186,7 +169,7 @@ public class Player_Character_Controller : MonoBehaviour
             }
         }
 
-    }
+     }
 
     private void MoveForward()
     {
@@ -260,15 +243,6 @@ public class Player_Character_Controller : MonoBehaviour
         canPlayLandSound = false;
     }
 
-
-    //IEnumerator runningSounds()
-    //{
-    //    canPlayRunSound = false;
-    //    yield return new WaitForSeconds(0.5f);
-    //    audioSource.PlayOneShot(RunSound, 1.0f);
-    //    canPlayRunSound = true;
-    //}
-
     private void PlayerLandingAnimation(Texture[] flipbookSprites)
     {
         animationTimer -= Time.deltaTime;
@@ -286,5 +260,4 @@ public class Player_Character_Controller : MonoBehaviour
             }
         }
      }
-
 }
