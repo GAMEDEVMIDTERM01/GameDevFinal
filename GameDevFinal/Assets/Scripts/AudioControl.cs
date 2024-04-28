@@ -7,7 +7,7 @@ public class AudioControl : MonoBehaviour
     public AudioSource Audiosource;
 
 
-    private float musicVolume = 0.2f;
+    private float musicVolume = .1f;
 
 
     // Start is called before the first frame update
