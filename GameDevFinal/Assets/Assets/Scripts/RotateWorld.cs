@@ -32,7 +32,6 @@ public class RotateWorld : MonoBehaviour
     {
         if (targetRotation != transform.rotation)
         {
-            Debug.Log("calling the normal one");
             if (player.transform.position.y < playerBorderY)
             {
                 player.transform.position = new Vector3(player.transform.position.x, lastPlayerY, player.transform.position.z);
