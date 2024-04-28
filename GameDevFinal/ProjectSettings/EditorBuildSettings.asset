@@ -10,37 +10,37 @@ EditorBuildSettings:
     guid: ba7da5f3523fd4067a769cb038ac3717
   - enabled: 1
     path: Assets/Assets/Scenes/Level 1.unity
-    guid: 2af6a5d32fdf840a488740971e107ab8
-  - enabled: 1
-    path: Assets/Assets/Scenes/Level 2.unity
     guid: bd24fc498529348168f1009f42080cf6
   - enabled: 1
+    path: Assets/Assets/Scenes/Level 2.unity
+    guid: 2af6a5d32fdf840a488740971e107ab8
+  - enabled: 1
     path: Assets/Assets/Scenes/Level 3.unity
+    guid: 6e1ab9d138302422d88a3e485ff1a666
+  - enabled: 1
+    path: Assets/Assets/Scenes/Level 4.unity
+    guid: a17b286411706424db11662c2ca37140
+  - enabled: 1
+    path: Assets/Assets/Scenes/Level 5.unity
+    guid: d611fa64c2fbc428f80ed346d757cddb
+  - enabled: 1
+    path: Assets/Assets/Scenes/Level 6.unity
+    guid: d83b4e8f69dec45c6af5e33c34f8750d
+  - enabled: 1
+    path: Assets/Assets/Scenes/Level 7.unity
+    guid: 7c13f968ec6544049b3ef75e72032fcf
+  - enabled: 1
+    path: Assets/Assets/Scenes/Level 8.unity
     guid: 5cef07728ab114811a60055b51992234
   - enabled: 0
     path: Assets/Scenes/Level 4.unity
     guid: c108882d697b646a2ad7b2d31b004e81
   - enabled: 1
-    path: Assets/Assets/Scenes/Level 4.unity
-    guid: d611fa64c2fbc428f80ed346d757cddb
-  - enabled: 1
-    path: Assets/Assets/Scenes/Level 5.unity
-    guid: 7c13f968ec6544049b3ef75e72032fcf
-  - enabled: 1
-    path: Assets/Assets/Scenes/Level 6.unity
+    path: Assets/Assets/Scenes/Level 9.unity
     guid: 4d376d727cb684dcca0048c2d080b7da
   - enabled: 1
-    path: Assets/Assets/Scenes/Level 7.unity
-    guid: 06bda6245cf5746cfabe191d4ffc0c14
-  - enabled: 1
-    path: Assets/Assets/Scenes/Level 8.unity
-    guid: 6e1ab9d138302422d88a3e485ff1a666
-  - enabled: 1
-    path: Assets/Assets/Scenes/Level 9.unity
-    guid: a17b286411706424db11662c2ca37140
-  - enabled: 1
     path: Assets/Assets/Scenes/Level 10.unity
-    guid: d83b4e8f69dec45c6af5e33c34f8750d
+    guid: 06bda6245cf5746cfabe191d4ffc0c14
   - enabled: 1
     path: Assets/Assets/Scenes/Final Scene.unity
     guid: 5eb0882230a8a4df78d2c9ac32c65a7d
