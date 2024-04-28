@@ -3603,6 +3603,11 @@ MonoBehaviour:
   - {fileID: 384452527}
   - {fileID: 1391504272}
   - {fileID: 535738317}
+  - {fileID: 226798511}
+  - {fileID: 1542720194}
+  - {fileID: 1875089874}
+  - {fileID: 648892105}
+  - {fileID: 1090708625}
 --- !u!1 &942970380
 GameObject:
   m_ObjectHideFlags: 0
