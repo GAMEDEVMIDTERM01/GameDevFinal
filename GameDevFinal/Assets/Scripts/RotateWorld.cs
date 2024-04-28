@@ -55,47 +55,39 @@ public class RotateWorld : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log(player.isGrounded);
+
         if(player.isGrounded && transform.rotation == targetRotation)
         {
             GetClosestRotation(rotationColliders);
+            Debug.Log("this function is getting called when on the wall");
         }
-        
-        
-        if (targetRotation == updatedRotation)
+
+        if(targetRotation != updatedRotation)
         {
-            if (targetRotation != transform.rotation)
+            if (updatedRotation != transform.rotation)
             {
                 if (player.transform.position.y < playerBorderY)
                 {
                     player.transform.position = new Vector3(player.transform.position.x, lastPlayerY, player.transform.position.z);
                 }
-                //Debug.Log("calling the closest position one instead");
+                Debug.Log("calling the closest position one instead");
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, updatedRotation, rotationSpeed * Time.deltaTime);
+            }
+        }
+
+        else
+        {
+            if (targetRotation != transform.rotation)
+            {
+                Debug.Log("calling the normal one");
+                if (player.transform.position.y < playerBorderY)
+                {
+                    player.transform.position = new Vector3(player.transform.position.x, lastPlayerY, player.transform.position.z);
+                }
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
             }
-
-            else
-            {
-                if (updatedRotation != transform.rotation)
-                {
-                    if (player.transform.position.y < playerBorderY)
-                    {
-                        player.transform.position = new Vector3(player.transform.position.x, lastPlayerY, player.transform.position.z);
-                    }
-                    transform.rotation = Quaternion.RotateTowards(transform.rotation, updatedRotation, rotationSpeed * Time.deltaTime);
-                }
-            }
         }
-
-        else if (targetRotation != transform.rotation)
-        {
-            //Debug.Log("calling the normal one");
-            if (player.transform.position.y < playerBorderY)
-            {
-                player.transform.position = new Vector3(player.transform.position.x, lastPlayerY, player.transform.position.z);
-            }
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-        }
-
     }
 
 }
