@@ -13,6 +13,7 @@ public class MusicLoop : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+
         DontDestroyOnLoad(this.gameObject);
 
     }
