@@ -85,7 +85,7 @@ public class Player_Character_Controller : MonoBehaviour
 
         isGrounded = Physics.OverlapSphere(groundCheckPivot.position, groundCheckRadius, groundLayer).Length > 0;
 
-        Debug.Log(isGrounded);
+        //Debug.Log(isGrounded);
         canJump = Input.GetKeyDown(KeyCode.Space);
         if (canJump && isGrounded)
         {

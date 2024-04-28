@@ -12,10 +12,11 @@ public class MapRotation : MonoBehaviour
     {
         if (collision.gameObject.CompareTag(player.tag))
         {
-            //Debug.Log("theres a collision detected");
+           // Debug.Log("theres a collision detected " + transform.localRotation);
             world.GetComponent<RotateWorld>().OnPlayerDetected(transform.localRotation);
-            
         }
     }
+
+    
 
 }

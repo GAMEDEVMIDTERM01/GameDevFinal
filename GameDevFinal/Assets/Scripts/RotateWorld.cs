@@ -8,7 +8,11 @@ public class RotateWorld : MonoBehaviour
 
     public Player_Character_Controller player;
 
-    
+    public Transform[] rotationColliders;
+
+    private Transform bestRotation;
+    private Quaternion updatedRotation;
+
 
     public float rotationSpeed;
     public Transform world;
@@ -32,11 +36,59 @@ public class RotateWorld : MonoBehaviour
         playerBorderY = lastPlayerY - heightReductionFactor;
     }
 
+    void GetClosestRotation(Transform[] colliders)
+    {
+        float closestDistanceSqr = Mathf.Infinity;
+        Vector3 currentPosition = player.transform.position;
+        foreach (Transform potentialRotation in colliders)
+        {
+            Vector3 directionToTarget = potentialRotation.position - currentPosition;
+            float dSqrToTarget = directionToTarget.sqrMagnitude;
+            if (dSqrToTarget < closestDistanceSqr)
+            {
+                closestDistanceSqr = dSqrToTarget;
+                bestRotation = potentialRotation;
+            }
+        }
+        updatedRotation = bestRotation.localRotation;
+    }
+
     private void Update()
     {
-
-        if (targetRotation != transform.rotation)
+        if(player.isGrounded && transform.rotation == targetRotation)
         {
+            GetClosestRotation(rotationColliders);
+        }
+        
+        
+        if (targetRotation == updatedRotation)
+        {
+            if (targetRotation != transform.rotation)
+            {
+                if (player.transform.position.y < playerBorderY)
+                {
+                    player.transform.position = new Vector3(player.transform.position.x, lastPlayerY, player.transform.position.z);
+                }
+                //Debug.Log("calling the closest position one instead");
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+            }
+
+            else
+            {
+                if (updatedRotation != transform.rotation)
+                {
+                    if (player.transform.position.y < playerBorderY)
+                    {
+                        player.transform.position = new Vector3(player.transform.position.x, lastPlayerY, player.transform.position.z);
+                    }
+                    transform.rotation = Quaternion.RotateTowards(transform.rotation, updatedRotation, rotationSpeed * Time.deltaTime);
+                }
+            }
+        }
+
+        else if (targetRotation != transform.rotation)
+        {
+            //Debug.Log("calling the normal one");
             if (player.transform.position.y < playerBorderY)
             {
                 player.transform.position = new Vector3(player.transform.position.x, lastPlayerY, player.transform.position.z);
