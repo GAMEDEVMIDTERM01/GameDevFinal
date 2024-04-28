@@ -8,12 +8,16 @@ public class RotateWorld : MonoBehaviour
 
     public Player_Character_Controller player;
 
+    
+
     public float rotationSpeed;
     public Transform world;
 
     private float lastPlayerY;
     private float playerBorderY;
     private float heightReductionFactor = 0.1f;
+
+
 
     public void OnPlayerDetected(Quaternion newTargetRotation)
     {
@@ -30,14 +34,16 @@ public class RotateWorld : MonoBehaviour
 
     private void Update()
     {
+
         if (targetRotation != transform.rotation)
         {
-            if(player.transform.position.y < playerBorderY)
+            if (player.transform.position.y < playerBorderY)
             {
                 player.transform.position = new Vector3(player.transform.position.x, lastPlayerY, player.transform.position.z);
             }
             transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         }
+
     }
 
 }
