@@ -31469,7 +31469,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2148378548181703886, guid: 03a501cd79f364fe18eae957238acd26, type: 3}
       propertyPath: sceneBuildIndex
-      value: 8
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 8734219427555793087, guid: 03a501cd79f364fe18eae957238acd26, type: 3}
       propertyPath: m_LocalScale.x
