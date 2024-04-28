@@ -17,6 +17,13 @@ public class MapRotation : MonoBehaviour
         }
     }
 
-    
+    //private void OnTriggerExit(Collider other)
+    //{
+    //    if (other.gameObject.CompareTag(player.tag))
+    //    {
+    //        // Debug.Log("theres a collision detected " + transform.localRotation);
+    //        world.GetComponent<RotateWorld>().GetClosestRotation();
+    //    }
+    //}
 
 }
