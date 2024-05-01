@@ -345,8 +345,8 @@ MonoBehaviour:
   JumpSound: {fileID: 8300000, guid: 71cb5fb38985448e38fbfd563e6c2b4a, type: 3}
   LandSound: {fileID: 8300000, guid: 026fc385d43c94f468eb7089904ee7e0, type: 3}
   forwardSpeed: 100
-  sideSpeed: 75
-  jumpForce: 120
+  sideSpeed: 100
+  jumpForce: 150
   playerCollider: {fileID: 4474232961422873115}
 --- !u!135 &4474232961422873115
 SphereCollider:
